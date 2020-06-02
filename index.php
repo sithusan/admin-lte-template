@@ -1,3 +1,12 @@
+
+<?php
+session_start();
+$username = $_SESSION['username'];
+if (!$username) {
+    header("Location:login.php");
+}
+
+?>
 <!DOCTYPE html>
 <html>
 
@@ -66,7 +75,7 @@
             <img src="dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
           </div>
           <div class="info">
-            <a href="#" class="d-block">User Name</a>
+            <a href="#" class="d-block"><?=$username?></a>
           </div>
         </div>
 
@@ -99,6 +108,14 @@
                   </a>
                 </li>
               </ul>
+              <li class="nav-item">
+              <a href="logout.php" class="nav-link">
+                <i class="nav-icon fas fa-th"></i>
+                <p>
+                  Logout
+                </p>
+              </a>
+            </li>
             </li>
           </ul>
         </nav>
@@ -137,7 +154,7 @@
               <br>
               <button class="btn btn-primary">Login</button>
             </form>
-         
+
         </div><!-- /.container-fluid -->
       </section>
       <!-- /.content -->
